@@ -1,0 +1,289 @@
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+	<div class="container">
+		<div class="row">
+
+			<!-- main start -->
+			<!-- ================ -->
+			<div class="main col-md-12">
+
+				<!-- page-title start -->
+				<!-- ================ -->
+				<h1 class="page-title"><%= @product.title %></h1>
+				<div class="separator-2"></div>
+				<!-- page-title end -->
+
+				<div class="row">
+					<div class="col-md-4">
+						<!-- pills start -->
+						<!-- ================ -->
+						<!-- Nav tabs -->
+						<ul class="nav nav-pills" role="tablist">
+							<li class="active"><a href="#pill-1" role="tab" data-toggle="tab" title="images"><i class="fa fa-camera pr-5"></i> Photo</a></li>
+							<!--<li><a href="#pill-2" role="tab" data-toggle="tab" title="video"><i class="fa fa-video-camera pr-5"></i> Video</a></li>-->
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content clear-style">
+							<div class="tab-pane active" id="pill-1">
+								<div class="owl-carousel content-slider-with-controls">
+									<div class="overlay-container overlay-visible">
+										<%= image_tag(@product.image_url)%>
+										<a href=<%=@product.image_url%> class="popup-img overlay-link" title= <%= @product.title%> ><i class="icon-plus-1"></i></a>
+									</div>
+									<% @product.more_images.each do |more_image| %>
+										<div class="overlay-container overlay-visible">
+											<%= image_tag(more_image.url) %>
+											<a href=<%= more_image.url%> class="popup-img overlay-link" title= <%= @product.title%> ><i class="icon-plus-1"></i></a>
+										</div>
+				          <% end %>
+								</div>
+							</div>
+							<!--<div class="tab-pane" id="pill-2">-->
+							<!--	<div class="embed-responsive embed-responsive-16by9">-->
+							<!--		<iframe class="embed-responsive-item" src="//player.vimeo.com/video/29198414?byline=0&amp;portrait=0"></iframe>-->
+							<!--		<p><a href="http://vimeo.com/29198414">Introducing Vimeo Music Store</a> from <a href="http://vimeo.com/staff">Vimeo Staff</a> on <a href="https://vimeo.com">Vimeo</a>.</p>-->
+							<!--	</div>-->
+							<!--</div>-->
+						</div>
+						<!-- pills end -->
+					</div>
+					<div class="col-md-8 pv-30">
+						<h2>Về sản phẩm</h2>
+						<h4><%= @product.title%></h4>
+						<p><%= @product.description%></p>
+						<hr class="mb-10">
+						<div class="clearfix mb-20">
+							<span>
+								<i class="fa fa-star text-default"></i>
+								<i class="fa fa-star text-default"></i>
+								<i class="fa fa-star text-default"></i>
+								<i class="fa fa-star text-default"></i>
+								<i class="fa fa-star text-default"></i>
+							</span>
+							<a href="#" class="wishlist"><i class="fa fa-heart-o pl-10 pr-5"></i>Wishlist</a>
+							<ul class="pl-20 pull-right social-links circle small clearfix margin-clear animated-effect-1">
+								<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+								<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+								<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+							</ul>
+						</div>
+						<div class="row grid-space-10">
+							<!--Norm oi anh sua o day ne-->
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>Size</label>
+									<%= select_tag "sizes_select", options_for_select(@sizes), {:prompt => 'Chọn size', class: 'form-control'}  %>
+								</div>
+							</div>
+							
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>Màu</label>
+									<%= select_tag "colors_select", options_for_select(@colors), {:prompt => 'Chọn màu', class: 'form-control'}  %>
+								</div>
+							</div>
+ 							<!--End of Norm-->
+ 							<div class="col-md-12 text-right">
+								<span id="quantity">Hãy chọn size và màu sản phẩm</span>
+							</div>
+						</div>
+						<div class="light-gray-bg p-20 bordered clearfix">
+							<% if @product.discount > 0%>
+								<span class="product price"><i class="icon-tag pr-10"></i><span style="text-decoration: line-through"><%= formatted_price(@product.price) %></span> -  <span style="color:#0c9ec7"> <%= formatted_price(@product.price * (100 - @product.discount)/ 100) %></span> </span> 
+							<% else %>
+								<span class="product price"><i class="icon-tag pr-10"></i> <%= formatted_price(@product.price) %> </span> 
+							<% end %>
+							<div class="product elements-list pull-right clearfix">
+								<% if @subproduct%>
+						    	<%= button_to cart_items_path(subproduct_id: @subproduct.id), remote: true , class: "margin-clear btn btn-default", id: "addtocart" do %>
+								    	<span>Thêm vào giỏ</span>
+									<% end %>
+								<% else%>
+									<%= button_to "#", disabled: true, remote: true, class: "margin-clear btn btn-default", id: "addtocart" do  %>
+								    	<span>Thêm vào giỏ</span>
+									<% end %>
+								<% end %>
+		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- main end -->
+
+		</div>
+	</div>
+</section>
+<!-- main-container end -->
+			
+
+<!-- section start -->
+<!-- ================ -->
+<section class="pv-30 light-gray-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs style-4" role="tablist">
+					<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Thông tin chi tiết</a></li>
+					<!--<li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>(3) Reviews</a></li>-->
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content padding-top-clear padding-bottom-clear">
+					<div class="tab-pane fade in active" id="h2tab2">
+						<h4 class="space-top">Thông tin chi tiết</h4>
+						<hr>
+						<dl class="dl-horizontal">
+							<dt>Chất liệu</dt>
+							<dd><%= @product.material%></dd>
+							<dt>Thương hiệu</dt>
+							<dd><%= @product.origin%></dd>
+							<dt>Người mẫu</dt>
+							<dd><%= simple_format(@product.ngmau) %></dd>
+							<dt>Kích thước cỡ</dt>
+							<dd><%= simple_format(@product.size_guide)%></dd>
+							<dt>Hướng dẫn giặt</dt>
+							<dd><%= @product.washing_guide%></dd>
+						</dl>
+						<hr>
+					</div>
+					<!--Comments tab-->
+					<!--<div class="tab-pane fade" id="h2tab3">-->
+						<!-- comments start -->
+					<!--	<div class="comments margin-clear space-top">-->
+							<!-- comment start -->
+					<!--		<div class="comment clearfix">-->
+					<!--			<div class="comment-avatar">-->
+					<!--				<img class="img-circle" src="images/avatar.jpg" alt="avatar">-->
+					<!--			</div>-->
+					<!--			<header>-->
+					<!--				<h3>Amazing!</h3>-->
+					<!--				<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 12:31</div>-->
+					<!--			</header>-->
+					<!--			<div class="comment-content">-->
+					<!--				<div class="comment-body clearfix">-->
+					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>-->
+					<!--					<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--		</div>-->
+							<!-- comment end -->
+
+							<!-- comment start -->
+					<!--		<div class="comment clearfix">-->
+					<!--			<div class="comment-avatar">-->
+					<!--				<img class="img-circle" src="images/avatar.jpg" alt="avatar">-->
+					<!--			</div>-->
+					<!--			<header>-->
+					<!--				<h3>Really Nice!</h3>-->
+					<!--				<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 10:31</div>-->
+					<!--			</header>-->
+					<!--			<div class="comment-content">-->
+					<!--				<div class="comment-body clearfix">-->
+					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>-->
+					<!--					<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--		</div>-->
+							<!-- comment end -->
+
+							<!-- comment start -->
+					<!--		<div class="comment clearfix">-->
+					<!--			<div class="comment-avatar">-->
+					<!--				<img class="img-circle" src="images/avatar.jpg" alt="avatar">-->
+					<!--			</div>-->
+					<!--			<header>-->
+					<!--				<h3>Worth to Buy!</h3>-->
+					<!--				<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 09:31</div>-->
+					<!--			</header>-->
+					<!--			<div class="comment-content">-->
+					<!--				<div class="comment-body clearfix">-->
+					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>-->
+					<!--					<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--		</div>-->
+							<!-- comment end -->
+					<!--	</div>-->
+						<!-- comments end -->
+
+						<!-- comments form start -->
+					<!--	<div class="comments-form">-->
+					<!--		<h2 class="title">Add your Review</h2>-->
+					<!--		<form role="form" id="comment-form">-->
+					<!--			<div class="form-group has-feedback">-->
+					<!--				<label for="name4">Name</label>-->
+					<!--				<input type="text" class="form-control" id="name4" placeholder="" name="name4" required>-->
+					<!--				<i class="fa fa-user form-control-feedback"></i>-->
+					<!--			</div>-->
+					<!--			<div class="form-group has-feedback">-->
+					<!--				<label for="subject4">Subject</label>-->
+					<!--				<input type="text" class="form-control" id="subject4" placeholder="" name="subject4" required>-->
+					<!--				<i class="fa fa-pencil form-control-feedback"></i>-->
+					<!--			</div>-->
+					<!--			<div class="form-group">-->
+					<!--				<label>Rating</label>-->
+					<!--				<select class="form-control" id="review">-->
+					<!--					<option value="five">5</option>-->
+					<!--					<option value="four">4</option>-->
+					<!--					<option value="three">3</option>-->
+					<!--					<option value="two">2</option>-->
+					<!--					<option value="one">1</option>-->
+					<!--				</select>-->
+					<!--			</div>-->
+					<!--			<div class="form-group has-feedback">-->
+					<!--				<label for="message4">Message</label>-->
+					<!--				<textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>-->
+					<!--				<i class="fa fa-envelope-o form-control-feedback"></i>-->
+					<!--			</div>-->
+					<!--			<input type="submit" value="Submit" class="btn btn-default">-->
+					<!--		</form>-->
+					<!--	</div>-->
+						<!-- comments form end -->
+					<!--</div>-->
+					<!--Comments end-->
+				</div>
+			</div>
+
+			<!-- sidebar start -->
+			<!-- ================ -->
+			<aside class="col-md-4 col-lg-3 col-lg-offset-1">
+				<div class="sidebar">
+					<div class="block clearfix">
+						<h3 class="title">Sản phẩm liên quan</h3>
+						<div class="separator-2"></div>
+						<% @suggested_products.each do |suggested_product| %>
+							<div class="media margin-clear">
+								<div class="media-left">
+									<div class="overlay-container">
+										<%= image_tag(suggested_product.image_url) %>
+										<%= link_to  detail_path(id: suggested_product.id) , method: :get, data: { no_turbolink: true }, class: "overlay-link small" do %>
+  												<i class="fa fa-link"></i>
+  											<% end %>
+									</div>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading"><%= link_to detail_path(id: suggested_product.id) , method: :get, data: { no_turbolink: true } do %><%= suggested_product.title %> <%end%></h6>
+									<p class="margin-clear">
+										<i class="fa fa-star text-default"></i>
+										<i class="fa fa-star text-default"></i>
+										<i class="fa fa-star text-default"></i>
+										<i class="fa fa-star text-default"></i>
+										<i class="fa fa-star text-default"></i>
+									</p>
+									<p><span class="price"><%= formatted_price(suggested_product.price * (100 - suggested_product.discount)/100)%></span></p>
+								</div>
+								<hr>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</aside>
+			<!-- sidebar end -->
+
+		</div>
+	</div>
+</section>
+<!-- section end -->

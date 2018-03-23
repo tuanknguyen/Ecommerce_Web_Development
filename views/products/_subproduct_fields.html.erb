@@ -1,0 +1,29 @@
+<div class="nested-fields">
+  <table id="subproduct_table_choose" class="table table-condensed table-bordered">
+
+      <thead>
+        <tr>
+          <th class="col-xs-4"><%= f.label :size, "Size", class: "control-label" %></th>
+          <th class="col-xs-4"><%= f.label :color, "Màu", class: "control-label" %></th>
+          <th class="col-xs-4"><%= f.label :quantity, "Số lượng", class: "control-label" %></th>
+        </tr>
+      </thead>
+
+
+      <tr class="">
+        <td> 
+          <!--The strange {} format is for f.select to load the css class -->
+          <%= f.select :size, Subproduct::SIZE, {include_blank: "Chọn size..."}, {class: 'form-control', style: 'height: 34px'} %>
+        </td>
+        <td>
+          <%= f.text_field :color, class: "form-control", style: 'height: 34px' %>
+        </td>
+        <td>
+          <%= f.number_field :quantity, class: "form-control", style: 'height: 34px' %>
+        </td>
+      </tr>
+
+  </table>
+    <%= link_to_remove_association "Xoá", f, class: "btn btn-warning", style: 'color:white !important' %>
+    <br></br>
+</div>

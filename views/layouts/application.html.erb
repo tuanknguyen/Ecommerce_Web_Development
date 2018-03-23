@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fashion# | Thời Trang Thiết Kế</title>
+	
+	
+	<%= csrf_meta_tags %>
+
+	<meta name="description" content="Fa#, thương mại điện tử dành riêng cho thời trang thiết kế">
+	<meta name="author" content="Fashion#">
+	
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+
+	<!--Google Fonts-->
+	
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Fontello CSS. TEMPORARILY USES CROSSORIGIN QUICK-FIX. TO CHANGE LATER! -->
+	<%= stylesheet_link_tag 'fontello.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
+	<!-- Plugins -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
+	<!--MINIFIED --> <%= stylesheet_link_tag 'animations.min.css', media: 'all', 'data-turbolinks-track' => true %>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css" rel="stylesheet">
+	<link href="
+https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css" rel="stylesheet">	
+	<!--MINIFIED --> <%= stylesheet_link_tag 'settings.min.css', media: 'all', 'data-turbolinks-track' => true %>
+	
+	
+	
+	<%= stylesheet_link_tag 'google-fonts.css', media: 'all', 'data-turbolinks-track' => true %>
+	
+
+
+	<!-- Fa# core CSS file -->
+	<!--MINIFIED --><%= stylesheet_link_tag 'style.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
+	<!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
+	<!--MINIFIED --><%= stylesheet_link_tag 'red.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
+	<!-- Custom css --> 
+	<!--<link href="/assets/custom.css" rel="stylesheet">-->
+	<style>
+		@supports (-ms-accelerator:true) {
+    	h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			.navbar .navbar-nav {
+			  font-family: sans-serif !important;
+			}
+			body {
+			  font-family: sans-serif !important;
+			}
+			
+			.xlarge_white {
+			  font-family: sans-serif !important;
+			}
+			
+			.large_white {
+			  font-family: sans-serif !important;
+			}
+			
+			.xlarge_dark {
+			  font-family: sans-serif !important;
+			}
+			
+			.large_dark {
+			  font-family: sans-serif !important;
+			}
+    	
+    	.tp-caption.medium_dark {
+    		font-family: sans-serif !important;
+    	}
+    	
+    	.tparrows.preview2 .tp-arr-titleholder {
+    		font-family: sans-serif !important;
+    	}
+    }
+	</style>
+</head>
+
+<body class="no-trans">
+	<div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+	<div class="page-wrapper">
+		<!-- header-container start -->
+		<div class="header-container">
+			<div class="header-top dark ">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-3 col-sm-6 col-md-9">
+							<!-- header-top-first start -->
+							<!-- ================ -->
+							<div class="header-top-first clearfix">
+								<ul class="social-links circle small clearfix hidden-xs">
+									<li class="facebook"><a target="_blank" href="https://www.facebook.com/fathangthietke"><i class="fa fa-facebook"></i></a></li>
+									<!--<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
+									<!--<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>-->
+									<!--<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>-->
+									
+									<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+									<!--<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>-->
+									
+									<!--<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>-->
+									
+								</ul>
+								<div class="social-links hidden-lg hidden-md hidden-sm circle small">
+									<div class="btn-group dropdown">
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
+										<ul class="dropdown-menu dropdown-animation">
+											<li class="facebook"><a target="_blank" href="https://www.facebook.com/fathangthietke"><i class="fa fa-facebook"></i></a></li>
+											<!--<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
+											<!--<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>-->
+											<!--<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>-->
+											<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+											<!--<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>-->
+											<!--<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>-->
+											
+										</ul>
+									</div>
+								</div>
+								<ul class="list-inline hidden-sm hidden-xs">
+									<!--<li><i class="fa fa-map-marker pr-1 pl-1"></i> 25 Trần Khát Chân</li>-->
+									<!--<li><i class="fa fa-phone pr-1 pl-1"></i> +84 9536210688</li>-->
+									
+									<% if session[:user_id]%>
+										<li><i class="fa fa-user pr-1 pl-1"></i>  Chào <%= User.find(session[:user_id]).user_name%></li>
+										<li><i class="fa fa-gift pr-1 pl-1"></i></li> Mã thành viên: <%= User.find(session[:user_id]).invitation_code %>
+										<li><i class="fa fa-money pr-1 pl-1"></i></li> Điểm: <%= User.find(session[:user_id]).point %>
+									<% end %>
+									
+								</ul>
+							</div>
+							<!-- header-top-first end -->
+						</div>
+						<div class="col-xs-9 col-sm-6 col-md-3">
+
+								<!-- header-top-second start -->
+								<!-- ================ -->
+								<div id="header-top-second"  class="clearfix">
+
+									<!-- header top dropdowns start -->
+									<!-- ================ -->
+									<div class="header-top-dropdown text-right">
+									<% if session[:user_id].blank? %>
+										<div class="btn-group">
+											<%= link_to register_path, method: :get, class: "btn btn-default btn-sm" do%>
+												<i class="fa fa-user pr-10"></i>
+												<span>Đăng ký</span> 
+											<% end %>
+										</div>
+										
+										<div class="btn-group dropdown">
+											<button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i>Đăng nhập</button>
+											<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+												<li class="dropdown">
+													<%= form_tag login_path, method: :post , :class => "login-form margin-clear" do %>
+														<div class="form-group has-feedback">
+															<%= label_tag :email, 'Email:' , class: "control-label"%>
+															<%= text_field_tag :email, params[:email] , class: "form-control" %>
+															<i class="fa fa-user form-control-feedback"></i>
+														</div>
+														<div class="form-group has-feedback">
+															<%= label_tag :password, 'Mật khẩu:' ,class: "control-label" %>
+															<%= password_field_tag :password, params[:password] , class: "form-control" %>
+															<i class="fa fa-lock form-control-feedback"></i>
+														</div>
+														
+															<a href="/forgot_password">Quên mật khẩu?</a>
+															<br></br>
+														
+														<%= submit_tag "Đăng nhập" , class: "btn btn-gray btn-sm" %>
+														<span class="pl-5 pr-5">hoặc</span>
+														<%= link_to "Đăng ký", register_path, method: :get, class: "btn btn-default btn-sm"%>
+														
+														<!--<span class="text-center">Login with</span>-->
+														<!--<ul class="social-links circle small colored clearfix">-->
+														<!--	<li class="facebook"><a target="_blank" href="https://www.facebook.com/fathangthietke"><i class="fa fa-facebook"></i></a></li>-->
+														<!--	<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
+														<!--	<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+														<!--</ul>-->
+													<% end %>
+												</li>
+											</ul>
+										</div>
+										<% else%>
+											<% if User.find(session[:user_id]).roles_mask >= 2%>
+												<div class="btn-group">
+													<%= link_to products_path , method: :get , class: 'btn btn-default btn-sm' do %>
+														Sản phẩm
+													<% end %>
+												</div>
+												<div class="btn-group">
+													<%= link_to orders_path , method: :get , class: 'btn btn-default btn-sm' do %>
+														Đơn hàng <span class="btn btn-danger" style="padding: 0 5px; margin-left: 5px; font-size: 0.9em;"><%=order_noti_count(session[:user_id]) %></span>
+													<% end %>
+												</div>
+											<% end %>
+											<div class="btn-group">
+												<%= link_to 'Tài khoản', '/users/myaccount' , method: :get , class: 'btn btn-default btn-sm'%>
+											</div>
+											
+											<div class="btn-group">
+												<%= link_to 'Đăng xuất', logout_path , method: :delete , class: 'btn btn-default btn-sm'%>
+											</div>
+										<% end %>
+									</div>
+									<!--  header top dropdowns end -->
+								</div>
+								<!-- header-top-second end -->
+								
+						</div>
+					</div>
+				</div>
+			</div>
+			<header class="header  fixed  full-width clearfix">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-3 col-xs-8" style="z-index: 9999">
+							<!-- header-left start -->
+							<!-- ================ -->
+							<div class="header-left clearfix">
+								<!-- logo -->
+								<div id="logo-wrapper">
+									<div id="logo" class="logo">
+										<%= link_to root_path, style: 'display:block;' do %>
+											<img id="logo_img" src="/images/fathang-logo_website.png" alt="Fa#" style="margin: auto"></a>
+										<% end %>
+									</div>
+									<!-- name-and-slogan -->
+									<div class="site-slogan" style="text-align: center">
+										Thời trang thiết kế - More than just fashion
+									</div>
+								</div>
+							
+							</div>
+							<!-- header-left end -->
+						</div>
+						<div class="col-sm-2 col-sm-push-7" style="margin-top: 14px;">
+							<div class="header-right clearfix">
+								<!-- header dropdown buttons -->
+								<div class="header-dropdown-buttons">
+									<div class="btn-group dropdown">
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></button>
+										<ul class="dropdown-menu dropdown-menu-right dropdown-animation" style="z-index: 9999;">
+											<li>
+												<form role="search" class="search-box margin-clear">
+													<div class="form-group has-feedback">
+														<input type="text" class="form-control" placeholder="Search">
+														 <i class="icon-search form-control-feedback"></i>
+													</div>
+												</form>
+											</li>
+										</ul>
+									</div>
+									<div class="btn-group dropdown" id="cart-button">
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i>
+										<div id="count">
+												<%= render :partial => "carts/count" %>	
+										</div>
+										</button>
+										<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart" style="z-index: 9999;">
+											<li>
+												<table class="table table-hover" id="cart">
+														<%= render @cart %>
+												</table>
+												<div class="panel-body text-right">
+												<%= link_to 'Xem giỏ hàng', @cart, method: :get, class: "btn btn-group btn-gray btn-sm"  %> 
+												<%= link_to "Thanh toán", new_order_path, method: :get, class: "btn btn-group btn-gray btn-sm" %>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<!--<div class="btn-group dropdown">-->
+									<!--	<button type="button" class="btn dropdown-toggle" data-toggle="tooltip" title="9999" data-placement="auto right" onclick="window.location.href='../orders'"><i class="fa fa-list-alt"></i><span class="cart-count default-bg" id="orders-count" style="width: initial; right: initial; padding: 0 5px; border-radius: 20%;">9999</span></button>-->
+										
+									<!--</div>-->
+								</div>
+								<!-- header dropdown buttons end-->
+							</div>
+						</div>
+						<div class="col-sm-7 col-sm-pull-2">
+							<!-- header-right start -->
+							<!-- ================ -->
+							<div class="header-right clearfix">
+								<!-- main-navigation start -->
+								<!-- classes: -->
+								<!-- "onclick": Makes the dropdowns open on click, this the default bootstrap behavior e.g. class="main-navigation onclick" -->
+								<!-- "animated": Enables animations on dropdowns opening e.g. class="main-navigation animated" -->
+								<!-- "with-dropdown-buttons": Mandatory class that adds extra space, to the main navigation, for the search and cart dropdowns -->
+								<!-- ================ -->
+								
+								<div class="main-navigation  animated with-dropdown-buttons">
+
+									<!-- navbar start -->
+									<!-- ================ -->
+									<nav class="navbar navbar-default" role="navigation">
+										<div class="container-fluid">
+
+											<!-- Toggle get grouped for better mobile display -->
+											<div class="navbar-header">
+												<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+													<span class="sr-only">Menu</span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+												
+											</div>
+
+											<!-- Collect the nav links, forms, and other content for toggling -->
+											<div class="collapse navbar-collapse" id="navbar-collapse-1">
+												<!-- main-menu -->
+												<ul class="nav navbar-nav ">
+													<li><a href="/?cat=2">Áo</a></li>
+													<li><a href="/?cat=1">Váy</a></li>
+													<li><a href="/?cat=3">Quần</a></li>
+													<!--<li class="dropdown">-->
+													<!--	<a class="dropdown-toggle" data-toggle="dropdown">Áo</a>-->
+													<!--	<ul class="dropdown-menu">-->
+													<!--		<li><a href="/?cat=1">Váy</a></li>-->
+													<!--		<li><a href="/?cat=2">Áo</a></li>-->
+													<!--		<li><a href="/?cat=3">Đồ công sở</a></li>-->
+													<!--		<li><a href="/?cat=4">Đồ dạ hội <span class="badge">New</span> </a></li>-->
+													<!--	</ul>-->
+													<!--</li>-->
+													
+													<!--<li class="dropdown ">-->
+													<!--	<a class="dropdown-toggle" data-toggle="dropdown">Váy</a>-->
+													<!--	<ul class="dropdown-menu">-->
+													<!--		<li><a href="/?cat=1">Áo ngắn tay</a></li>-->
+													<!--		<li><a href="/?cat=2">Áo dài tay</a></li>-->
+													<!--		<li><a href="/?cat=3">Quần</a></li>-->
+													<!--		<li><a href="/?cat=4">Đồ công sở <span class="badge">New</span> </a></li>-->
+													<!--	</ul>-->
+													<!--</li>-->
+													
+													<!--<li class="dropdown ">-->
+													<!--	<a class="dropdown-toggle" data-toggle="dropdown">Quần</a>-->
+													<!--	<ul class="dropdown-menu">-->
+													<!--		<li><a href="/?cat=1">Phụ kiện váy</a></li>-->
+													<!--		<li><a href="/?cat=2">Phụ kiện áo</a></li>-->
+													<!--		<li><a href="/?cat=3">Phụ kiện khác</a></li>-->
+															<!--<li><a href="/?cat=4">Đồ dạ hội <span class="badge">New</span> </a></li>-->
+													<!--	</ul>-->
+													<!--</li>-->
+													
+													<li class="dropdown ">
+														<a class="dropdown-toggle" data-toggle="dropdown">Brands</a>
+														<ul class="dropdown-menu">
+															<li><a href="#">Nap in the Lab</a></li>
+															<!--<li><a href="/?cat=2">Áo</a></li>-->
+															<!--<li><a href="/?cat=3">Đồ công sở</a></li>-->
+															<!--<li><a href="/?cat=4">Đồ dạ hội <span class="badge">New</span> </a></li>-->
+														</ul>
+													</li>
+
+													<li class="dropdown ">
+														<a class="dropdown-toggle" data-toggle="dropdown">About Fa#</a>
+														<ul class="dropdown-menu">
+															<li><a href="/static_pages/about_us">About Us</a></li>
+															<li><a href="/static_pages/policy">Quy định</a></li>
+															<li><a href="/static_pages/faq">Câu hỏi thường gặp</a></li>
+															<li><a href="/static_pages/contact_us">Liên hệ</a></li>
+														</ul>
+													</li>
+													
+													<!--<li><a href="/static_pages/policy#chuong-trinh-khuyen-mai">SALES!!</a></li>-->
+												</ul>
+												<!-- main-menu end -->
+												
+												
+												
+											</div>
+
+										</div>
+									</nav>
+									<!-- navbar end -->
+
+								</div>
+								<!-- main-navigation end -->	
+							</div>
+							<!-- header-right end -->
+
+						</div>
+						
+					</div>
+				</div>
+
+			</header>
+		</div>
+			
+		<!--<div class="banner border-clear light-translucent-bg" style="background-image:url('../../../../images/shop-banner.jpg');background-position: 50% 32%;">-->
+			<!-- breadcrumb start -->
+			<!-- ================ -->
+			<!--<div class="breadcrumb-container">-->
+			<!--	<div class="container">-->
+			<!--		<ol class="breadcrumb">-->
+			<!--			<li><i class="fa fa-home pr-10"></i><a class="link-dark" href="/">Home</a></li>-->
+			<!--			<li class="active">Fa#</li>-->
+			<!--		</ol>-->
+			<!--	</div>-->
+			<!--</div>-->
+			<!-- breadcrumb end -->
+		<!--	<div class="container">-->
+		<!--		<div class="row">-->
+		<!--			<div class="col-md-8 text-center col-md-offset-2 pv-20">-->
+		<!--				<h2 class="title object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">Welcome to <strong>Fa#</strong></h2>-->
+		<!--				<div class="separator object-non-visible mt-10" data-animation-effect="fadeIn" data-effect-delay="100"></div>-->
+		<!--				<p class="text-center object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">Trang web dành riêng cho thời trang thiết kế đầu tiên với giá cả ưu đãi nhất.</p>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</div>-->
+
+		<%= yield %>
+		
+		<!-- section start -->
+		<!-- ================ -->
+		<!--<section class="section dark-translucent-bg background-img-2" style="background-position: 50% 52%;">-->
+		<!--	<div class="container">-->
+		<!--		<div class="row">-->
+		<!--			<div class="col-md-12">-->
+		<!--				<div class="call-to-action text-center">-->
+		<!--					<div class="row">-->
+		<!--						<div class="col-sm-8">-->
+		<!--							<h1 class="title">Dành Cho Quảng Cáo</h1>-->
+		<!--							<p></p> -->
+		<!--						</div>-->
+		<!--						<div class="col-sm-4">-->
+		<!--							<br>-->
+		<!--							<p><a href="#" class="btn btn-lg btn-default btn-animated">Mua Ngay<i class="fa fa-arrow-right pl-20"></i></a></p>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--</section>-->
+		<!-- section end -->
+		
+		<!-- section start -->
+		<!-- ================ -->
+		<!--<section class="section clearfix">-->
+		<!--	<div class="container">-->
+		<!--		<div class="row">-->
+		<!--			<div class="col-md-12">-->
+		<!--				<h3 class="logo-font">Các Thương Hiệu Thiết Kế</h3>-->
+		<!--				<div class="clients-container">-->
+		<!--					<div class="clients">-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">-->
+		<!--							<a href="#"><img src="/images/client-1.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="200">-->
+		<!--							<a href="#"><img src="/images/client-2.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="300">-->
+		<!--							<a href="#"><img src="/images/client-3.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="400">-->
+		<!--							<a href="#"><img src="/images/client-4.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="500">-->
+		<!--							<a href="#"><img src="/images/client-5.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--						<div class="client-image object-non-visible" data-animation-effect="fadeIn" data-effect-delay="600">-->
+		<!--							<a href="#"><img src="/images/client-6.png" alt=""></a>-->
+		<!--						</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--	</div>-->
+		<!--</section>-->
+		<!-- section end -->
+		
+		<!-- section start -->
+		<!-- ================ -->
+		<section class="section dark-translucent-bg pv-40" style="background-image:url('/images/anh-banner2.jpg');background-position: 50% 32%;">
+			<div class="container">
+				<div class="row grid-space-10">
+					<div class="col-md-3 col-sm-6">
+						<div class="pv-30 ph-20 feature-box text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="100">
+							<span class="icon default-bg"><i class="fa fa-diamond"></i></span>
+							<h3>Premium &amp; Guaranteed Quality</h3>
+							<div class="separator clearfix"></div>
+							<p>100% Thời Trang Thiết Kế Việt Nam.</p>
+							<a href="/static_pages/about_us" class="link-dark">Tìm hiểu thêm<i class="pl-5 fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="pv-30 ph-20 feature-box text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="150">
+							<span class="icon default-bg"><i class="icon-lock"></i></span>
+							<h3>Secure &amp; Safe Payment</h3>
+							<div class="separator clearfix"></div>
+							<p>Thanh toán bằng chuyển khoản, hay tiền mặt khi nhận hàng.</p>
+							<a href="#" class="link-dark">Tìm hiểu thêm<i class="pl-5 fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<div class="clearfix visible-sm"></div>
+					<div class="col-md-3 col-sm-6">
+						<div class="pv-30 ph-20 feature-box text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+							<span class="icon default-bg"><i class="icon-globe"></i></span>
+							<h3 class="pl-10 pr-10">Shipping &amp; Return Policy</h3>
+							<div class="separator clearfix"></div>
+							<p>Giao hàng nhanh chóng, tiện lợi.<br/> <span style="letter-spacing: -0.3px;margin-left: -10px;margin-right: -10px;">Miễn phí đổi trả hàng trong vòng 30 ngày.</span></p>
+							<a href="/static_pages/policy" class="link-dark">Tìm hiểu thêm<i class="pl-5 fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="pv-30 ph-20 feature-box text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="250">
+							<span class="icon default-bg"><i class="icon-thumbs-up"></i></span>
+							<h3>Customer Service <br /><br /></h3>
+							<div class="separator clearfix"></div>
+							<p>Dịch vụ chăm sóc khách hàng chu đáo, thường trực 9 am đến 5 pm hàng ngày.</p>
+							<a href="/static_pages/contact_us" class="link-dark">Tìm hiểu thêm<i class="pl-5 fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="call-to-action text-center">
+							<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+									<h2 class="title"><strong>Đăng ký ngay</strong> - Giảm 10%</h2>
+									<p>Đăng ký ngay tài khoản Fa# để nhận phiếu giảm giá 10% cho đơn hàng đầu tiên</p>
+									<div class="separator"></div>
+									<!--Subscribe send mail form-->
+									<!--<%= form_tag subscribe_mail_path, class: "form-inline margin-clear" do %>-->
+									<!--	<div class="form-group has-feedback">-->
+									<!--		<%= email_field_tag :email, params[:email] , class: "form-control form-control-lg" , id: "subscribe3", placeholder: "Nhập Email", :required => true%>-->
+									<!--		<i class="fa fa-envelope form-control-feedback"></i>-->
+									<!--	</div>-->
+									<!--	<button type="submit" class="btn btn-lg btn-gray-transparent btn-animated margin-clear">Hoàn tất <i class="fa fa-send"></i></button>-->
+									<!--<% end %>-->
+									<!--End subscribe send mail form-->
+									<%= link_to register_path, class: "btn btn-lg btn-gray-transparent btn-animated margin-clear" do%>
+										Đăng ký<i class="fa fa-send"></i>
+									<%end%>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- section end -->
+		
+		<!-- footer top end -->
+
+		<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
+		<!-- ================ -->
+		<footer id="footer" class="clearfix ">
+
+				<!-- .footer start -->
+				<!-- ================ -->
+				<div class="footer">
+					<div class="container">
+						<div class="footer-inner">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="footer-content">
+										<div class="logo-footer"><img id="logo-footer" src="/images/fathang-logo_website.png" alt=""></div>
+										<p>Featuring Designer Brands Made in Vietnam with high-quality fashion at reasonable price.</p>
+										<p>Cam kết 100% hàng thiết kế của Việt Nam. Mẫu mã đẹp, chất lượng cao, giá cả hợp lý.</p>
+										<div class="icons-block mt-10 mb-10">
+											<i class="fa fa-cc-paypal"></i>
+											<!--<i class="fa fa-cc-amex"></i>-->
+											<!--<i class="fa fa-cc-discover"></i>-->
+											<i class="fa fa-cc-mastercard"></i>
+											<!--<i class="fa fa-cc-visa"></i>-->
+											<i class="fa fa-cc-stripe"></i>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="footer-content">
+										<h2 class="title">Tài Khoản của Tôi</h2>
+										<div class="separator-2"></div>
+										<nav class="mb-20">
+											<ul class="nav nav-pills nav-stacked list-style-icons">
+												<li><a href="/users/myaccount"><i class="icon-tools"></i> Thông tin cá nhân</a></li>
+												<li><a href="/users/myaccount#lich-su-mua-hang"><i class="icon-search"></i> Đơn hàng</a></li>
+												<li>
+													<%= link_to  @cart, method: :get do %>
+														<i class="icon-basket-1"></i> Giỏ hàng
+													<% end %>
+												</li>
+												<!--<li><a href="#"><i class="icon-heart"></i> Wish List</a></li>-->
+												<!--<li><a href="#"><i class="icon-chat"></i> Notifications</a></li>-->
+												<li><a target="_blank" href="/static_pages/policy"><i class="icon-thumbs-up"></i> Hỗ trợ</a></li>
+												<!--<li><a href="#"><i class="icon-lock"></i> Privacy</a></li>-->
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="footer-content">
+										<h2 class="title">Sản phẩm mới nhất</h2>
+										<div class="separator-2"></div>
+										<div class="row grid-space-10">
+											<% @latest_products = get_latest_products %>
+											<% @latest_products.each do |latest_product| %>
+												<div class="col-xs-6">
+													<div class="overlay-container mb-10">
+														<%= image_tag(latest_product.image_url) %>
+														<%= link_to  detail_path(id: latest_product.id) , method: :get, data: { no_turbolink: true }, class: "overlay-link small" do %>
+				  												<i class="fa fa-link"></i>
+		  											<% end %>
+													</div>
+												</div>
+											<% end %>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="footer-content">
+										<h2 class="title">Follow Fashion#</h2>
+										<div class="separator-2"></div>
+										<p>Hãy like và follow chúng tôi trên Facebook, và Instagram để luôn được cập nhật về những món hàng "hot" nhất và những khuyến mãi mới nhất nhé!</p>
+										<%= link_to "Facebook Share", '/auth/facebook' %>
+										<ul class="social-links circle animated-effect-1">
+											<li class="facebook"><a target="_blank" href="https://www.facebook.com/fathangthietke"><i class="fa fa-facebook"></i></a></li>
+											<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+											<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+											<!--<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>-->
+											<!--<li class="xing"><a target="_blank" href="http://www.xing.com"><i class="fa fa-xing"></i></a></li>-->
+										</ul>
+										<div class="separator-2"></div>
+										<ul class="list-icons">
+											<li><i class="fa fa-map-marker pr-10 text-default"></i> 25 Trần Khát Chân, Hà Nội</li>
+											<li><i class="fa fa-phone pr-10 text-default"></i> +84 906283622</li>
+											<li><a href="mailto:fathanghotro@gmail.com"><i class="fa fa-envelope-o pr-10"></i>fathanghotro@gmail.com</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- .footer end -->
+
+				<!-- .subfooter start -->
+				<!-- ================ -->
+				<div class="subfooter">
+					<div class="container">
+						<div class="subfooter-inner">
+							<div class="row">
+								<div class="col-md-12">
+									<p class="text-center">Copyright © 2016 Fa# by <a target="_blank" href="#">Fashion#</a>. All Rights Reserved</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- .subfooter end -->
+
+			</footer>
+			<!-- footer end -->
+
+	</div>
+
+	<!-- JavaScript files placed at the end of the document so the pages load faster -->
+	<!-- ================================================== -->
+	<!-- Jquery and Bootstap core js files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/1.3.0/turbolinks.min.js"></script>
+	
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.1/rails.min.js"></script>
+	
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<!-- Modernizr javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+	<%= javascript_include_tag 'jquery.stickytabs.min.js', 'data-turbolinks-track' => true %>
+	
+	<!-- jQuery Revolution Slider  *****TO CDN. MINIFIED*****-->
+	<%= javascript_include_tag 'jquery.themepunch.tools.min.js', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'jquery.themepunch.revolution.min.js', 'data-turbolinks-track' => true %>
+		
+	<!-- Isotope javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
+
+	<!-- Magnific Popup javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	
+	<!-- Contact form -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+	
+	<!-- Owl carousel javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+	
+	<!-- SmoothScroll javascript *****TO CDN. MINIFIED*****-->
+	<%= javascript_include_tag 'jquery.browser.min.js', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'SmoothScroll.min.js', 'data-turbolinks-track' => true %>
+
+	<!-- Cocoon *****FROM GEM. TO CDN. MINIFIED*****-->
+	<%= javascript_include_tag 'cocoon.min.js', 'data-turbolinks-track' => true %>
+	
+	<!-- Appear javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+
+	<!-- Count To javascript *****TO CDN. MINIFIED***** -->
+	<%= javascript_include_tag 'jquery.countTo.min.js', 'data-turbolinks-track' => true %>
+
+	<!-- Parallax javascript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax-min.js"></script>
+	
+	<!-- Bootstrap Notify javascript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.5/bootstrap-notify.min.js"></script>
+
+	<!-- Initialization of Plugins -->
+	<%= javascript_include_tag 'template.min.js', 'data-turbolinks-track' => true %>
+			
+	<!--Custom javascript-->
+	<!--<script src="/assets/custom.js"></script>-->
+	
+	<!--Lazyloading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/2.0.0/lazysizes.min.js" async=""></script>
+	
+	<script>
+		// $(document).ready(function(){
+		// 	$('[data-toggle="tooltip"]').tooltip(); 
+		// 	if(parseInt($('span#orders-count').text())>=100) {
+		// 		$('span#orders-count').text('99+');
+		// 	}
+		// });
+		$(window).load(function() {
+			
+			
+			
+  		<% if !flash.empty? %> 
+  		var typeNotify = 'success';
+			<% if flash[:alert] %> {typeNotify = 'danger';} <%end%>
+    $.notify({
+					// options
+					message: '<%=flash[flash.keys[0]]%>'
+				},{
+					// settings
+					type: typeNotify,
+					delay: 2500,
+					offset : {
+						y: 30,
+						x: 20
+					},
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					placement: {
+						from: "top",
+						align: "right"
+					}
+				});
+    <%end%>
+	});
+	</script>
+</body>
+</html>

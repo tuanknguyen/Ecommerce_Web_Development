@@ -1,0 +1,643 @@
+<%= stylesheet_link_tag 'bootstrap-sortable.css', media: 'all', 'data-turbolinks-track' => true %>
+<!-- main-container start -->
+			<!-- ================ -->
+			<section class="main-container">
+
+				<div class="container">
+					<div class="row">
+
+						<!-- main start -->
+						<!-- ================ -->
+						<div class="main">
+
+							<!-- page-title start -->
+							<!-- ================ -->
+							<h1 class="page-title">Tài khoản của tôi</h1>
+							<div class="separator-2"></div>
+							<br>
+							<!-- page-title end -->
+
+							<!-- Tabs and Pills start -->
+							<!-- ============================================================================== -->
+
+							<!-- Tabs start -->
+							<!-- ================ -->
+							<!-- ================ -->
+							<div class="vertical">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#thong-tin-cua-toi" role="tab" data-toggle="tab"><i class="fa-fw fa fa-user"></i>  Thông tin của tôi</a></li>
+									<!--<li><a href="#vtab2" role="tab" data-toggle="tab"><i class="fa-fw fa fa-map-marker"></i>  Địa chỉ nhận hàng</a></li>-->
+									<!--<li><a href="#vtab3" role="tab" data-toggle="tab"><i class="fa-fw fa fa-credit-card"></i>  Phương thức thanh toán</a></li>-->
+									<li><a href="#lich-su-mua-hang" role="tab" data-toggle="tab"><i class="fa-fw fa fa-history"></i>  Lịch sử mua hàng</a></li>
+									<!--<li><a href="#vtab5" role="tab" data-toggle="tab"><i class="fa-fw fa fa-heart-o"></i>  Danh sách ưa thích</a></li>-->
+									<!--<li><a href="#"><i class="fa-fw fa fa-sign-out"></i>  Đăng xuất</a></li>-->
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content" style="width:100%;">
+									<div class="tab-pane fade in active" id="thong-tin-cua-toi">
+										<div class="row">
+											<h3 class="title">Thông tin của tôi</h3>
+											<div class="separator-2"></div>
+											<div class="col-lg-7">
+												<!--<form class="form-horizontal" accept-charset="UTF-8">-->
+												<!--					<h4>Thông tin cá nhân</h4>-->
+												<!--					<div class="form-group">-->
+												<!--						<label class="col-sm-3 control-label">Họ và tên</label>-->
+												<!--						<div class="col-sm-8">-->
+												<!--							<input class="form-control" type="text">-->
+												<!--						</div>-->
+												<!--					</div>-->
+												<!--					<div class="form-group">-->
+												<!--						<label class="col-sm-3 control-label">Giới tính</label>-->
+												<!--						<div class="col-sm-8">-->
+												<!--							<select class="form-control" placeholder="Giới tính" required>-->
+												<!--								<option value="" disabled="" selected="">Giới tính</option>-->
+												<!--								<option>Nam</option>-->
+												<!--								<option>Nữ</option>-->
+												<!--								<option>Khác</option>-->
+												<!--							</select>-->
+												<!--						</div>-->
+												<!--					</div>-->
+												<!--					<div class="form-group">-->
+												<!--						<label class="col-sm-3 control-label">Newsletter</label>-->
+																		<!--<div class="col-sm-8">-->
+																		<!--	<div class="checkbox">-->
+																		<!--							<label>-->
+																		<!--								<input type="checkbox" value="">-->
+																		<!--								Đăng ký nhận thư điện tử của Fa# để giảm 5% cho đơn hàng đầu tiên.-->
+																		<!--							</label>-->
+																		<!--		</div>-->
+																		<!--</div>-->
+												<!--					</div>-->
+												<!--					<div class="form-group">-->
+												<!--						<div class="col-sm-9 col-sm-offset-3">-->
+												<!--							<button class="btn btn-default">Lưu</button>-->
+												<!--						</div>-->
+												<!--					</div>-->
+												<!--</form>-->
+												<%= form_for @user , html: { class: "form-horizontal" } do |f| %>   
+							            <% if @user.errors.any? %>
+							              <div id="error_explanation">
+							                <h3>Đã có <%=@user.errors.count%> lỗi xảy ra:</h3>
+							                <ul>
+							                <% @user.errors.full_messages.each do |message| %>
+							                  <li><%= message %></li>
+							                <% end %>
+							                </ul>
+							              </div>
+							            <% end %>
+							
+							            <div class="form-group">
+							              <%= f.label :email, class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                <%= f.text_field :email, class: "form-control" , id: "email", :readonly => true %>
+							              </div>
+							            </div>
+							            
+							            <div class="form-group">
+							               <%= f.label :user_name, "Họ và tên", for: "username", class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                 <%= f.text_field :user_name, class: "form-control", id: "username", :required => true%>
+							              </div>
+							            </div>
+							            
+							            <div class="form-group">
+							             <%= f.label :address, "Địa chỉ", for: "address", class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                 <%= f.text_area :address, class: "form-control", id: "address", :required => true%>
+							              </div>
+							            </div>
+							            
+							            <div class="form-group">
+							             <%= f.label :telephone, "Số điện thoại", for: "address", class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                 <%= f.text_field :telephone, class: "form-control", id: "telephone", :required => true%>
+							              </div>
+							            </div>
+							            
+							            <div class="form-group">
+							             <%= f.label :password, "Mật khẩu", for: "password", class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                 <%= f.password_field :password, class: "form-control", id: "password", :required => true%>
+							              </div>
+							            </div>
+							            
+							            <div class="form-group">
+							             <%= f.label :password_confirmation, "Nhập lại mật khẩu", for: "password_confirmation", class: "col-sm-3 control-label"%>
+							              <div class="col-sm-8">
+							                 <%= f.password_field :password_confirmation, class: "form-control", id: "password_conirmation", :required => true%>
+							              </div>
+							            </div>
+							            <div class="form-group">
+							              <div class="col-sm-offset-3 col-sm-8">
+							                <%= button_tag(type: 'submit', class: "btn btn-group btn-default btn-animated") do %>
+							                  <i class="fa fa-check"></i> Lưu
+							                <% end %>
+							              </div>
+							            </div>
+							            <% end %>
+												<div style="line-height:25%;">
+													<br>
+												</div>
+											</div>
+										
+											<div class="col-lg-5">
+												<h4>Thông tin tài khoản</h4>
+												Mã thành viên: <%= @user.invitation_code %>
+												<p></p>
+												Điểm tích lũy: <%= @user.point %>
+											</div>
+											<!--<div class="col-lg-7">-->
+											<!--	<form class="form-horizontal"  accept-charset="UTF-8">-->
+											<!--			<h4>Thông tin tài khoản</h4>-->
+											<!--			<div class="form-group">-->
+											<!--			  <label class="col-sm-4 control-label">Email</label>-->
+											<!--			  <div class="col-sm-7">-->
+											<!--			    <input class="form-control" type="text">-->
+											<!--			  </div>-->
+											<!--			</div>-->
+											<!--			<div class="form-group">-->
+											<!--			  <label class="col-sm-4 control-label">Xác nhận email</label>-->
+											<!--			  <div class="col-sm-7">-->
+											<!--			    <input class="form-control" type="text">-->
+											<!--			  </div>-->
+											<!--			</div>-->
+											<!--			<div class="form-group">-->
+											<!--				<label class="col-sm-4 control-label">Mật khẩu</label>-->
+											<!--				<div class="col-sm-7">-->
+											<!--					<input type="password" class="form-control" id="password-my-account">-->
+											<!--				</div>-->
+											<!--			</div>-->
+											<!--			<div class="form-group">-->
+											<!--												<label class="col-sm-4 control-label">Xác nhận mật khẩu</label>-->
+											<!--												<div class="col-sm-7">-->
+											<!--													<input type="password" class="form-control" id="confirm-password-my-account">-->
+											<!--												</div>-->
+											<!--			</div>-->
+											<!--			<div class="form-group">-->
+											<!--				<div class="col-sm-8 col-sm-offset-4">-->
+											<!--					<div class="checkbox">-->
+											<!--											<label>-->
+											<!--												<input type="checkbox" value="" id="show-password-my-account">-->
+											<!--												Hiển thị mật khẩu-->
+
+											<!--											</label>-->
+											<!--						</div>-->
+											<!--				</div>-->
+											<!--			</div>-->
+											<!--			<div class="form-group">-->
+											<!--				<div class="col-sm-9 col-sm-offset-3">-->
+											<!--					<button class="btn btn-default">Lưu</button>-->
+											<!--				</div>-->
+											<!--			</div>-->
+											<!--	</form>-->
+											<!--</div>-->
+										</div>
+									</div>
+
+									<!--<div class="tab-pane fade" id="vtab2">-->
+									<!--	<div class="row">-->
+									<!--		<h3 class="title">Địa chỉ</h3>-->
+									<!--		<div class="separator-2"></div>-->
+											<!--<div class="col-md-5">-->
+											<!--	<form class="form-horizontal" accept-charset="UTF-8">-->
+											<!--		<h4>Sổ địa chỉ</h4>-->
+											<!--			<div class="form-group">-->
+											<!--				<div class="small col-xs-6 col-md-12">-->
+											<!--					<h6 style="margin-bottom:0">DO NGOC DUC-->
+											<!--					</h6>-->
+											<!--					<span>P307, C4, Nam Đồng, Đống Đa</span>-->
+											<!--					<br>-->
+											<!--					<span>Hà Nội</span>-->
+											<!--					<br>-->
+											<!--					<span>+6583169484</span>-->
+											<!--					<br>-->
+											<!--					<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+											<!--					<br>-->
+											<!--				</div>-->
+
+											<!--				<div class="small col-xs-6 col-md-12">-->
+											<!--					<h6 style="margin-bottom:0">DO NGOC DUC-->
+											<!--					</h6>-->
+											<!--					<span>P307, C4, Nam Đồng, Đống Đa</span>-->
+											<!--					<br>-->
+											<!--					<span>Hà Nội</span>-->
+											<!--					<br>-->
+											<!--					<span>+6583169484</span>-->
+											<!--					<br>-->
+											<!--					<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+											<!--					<br>-->
+											<!--				</div>-->
+
+											<!--				<div class="small col-xs-6 col-md-12">-->
+											<!--					<h6 style="margin-bottom:0">DO NGOC DUC-->
+											<!--					</h6>-->
+											<!--					<span>P307, C4, Nam Đồng, Đống Đa</span>-->
+											<!--					<br>-->
+											<!--					<span>Hà Nội</span>-->
+											<!--					<br>-->
+											<!--					<span>+6583169484</span>-->
+											<!--					<br>-->
+											<!--					<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+											<!--					<br>-->
+											<!--				</div>-->
+
+											<!--			</div>-->
+
+											<!--	</form>-->
+											<!--	<div style="line-height:25%;">-->
+											<!--		<br>-->
+											<!--	</div>-->
+											<!--</div>-->
+
+									<!--		<div class="col-md-7">-->
+									<!--			<form class="form-horizontal" accept-charset="UTF-8">-->
+									<!--					<h4>Cập nhật địa chỉ</h4>-->
+									<!--					<div class="form-group">-->
+									<!--						<label class="col-sm-3 control-label">Họ và tên</label>-->
+									<!--						<div class="col-sm-8">-->
+									<!--							<input class="form-control" type="text">-->
+									<!--						</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--						<label class="col-sm-3 control-label">Địa chỉ</label>-->
+									<!--						<div class="col-sm-8">-->
+									<!--							<input class="form-control" type="text">-->
+									<!--						</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Tỉnh/Thành phố</label>-->
+									<!--									<div class="col-sm-8">-->
+																			<!-- taken from Tiki.vn -->
+									<!--										<select class="form-control address">-->
+									<!--											<option value="" selected="" disabled="">Chọn Tỉnh/Thành phố</option>-->
+									<!--											<option value="297" selected="">Hà Nội</option>-->
+									<!--										</select>-->
+																			<!--<select class="form-control address">-->
+																			<!--	<option value="" selected="" disabled="">Chọn Tỉnh/Thành phố</option>-->
+						             <!--               <option value="294">Hồ Chí Minh</option>-->
+						             <!--               <option value="297" selected="">Hà Nội</option>-->
+						             <!--               <option value="291">Đà Nẵng</option>-->
+						             <!--               <option value="278">An Giang</option>-->
+						             <!--               <option value="280">Bà Rịa - Vũng Tàu</option>-->
+						             <!--               <option value="282">Bắc Giang</option>-->
+						             <!--               <option value="281">Bắc Kạn</option>-->
+						             <!--               <option value="279">Bạc Liêu</option>-->
+						             <!--               <option value="283">Bắc Ninh</option>-->
+						             <!--               <option value="284">Bến Tre</option>-->
+						             <!--               <option value="285">Bình Dương</option>-->
+						             <!--               <option value="286">Bình Phước</option>-->
+						             <!--               <option value="287">Bình Thuận</option>-->
+						             <!--               <option value="316">Bình Định</option>-->
+						             <!--               <option value="289">Cà Mau</option>-->
+						             <!--               <option value="290">Cần Thơ</option>-->
+						             <!--               <option value="288">Cao Bằng</option>-->
+						             <!--               <option value="292">Đắk Lắk</option>-->
+						             <!--               <option value="340">Đắk Nông</option>-->
+						             <!--               <option value="341">Điện Biên</option>-->
+						             <!--               <option value="317">Đồng Nai</option>-->
+						             <!--               <option value="318">Đồng Tháp</option>-->
+						             <!--               <option value="293">Gia Lai</option>-->
+						             <!--               <option value="295">Hà Giang</option>-->
+						             <!--               <option value="296">Hà Nam</option>-->
+						             <!--               <option value="299">Hà Tĩnh</option>-->
+						             <!--               <option value="300">Hải Dương</option>-->
+						             <!--               <option value="301">Hải Phòng</option>-->
+						             <!--               <option value="319">Hậu Giang</option>-->
+						             <!--               <option value="302">Hoà Bình</option>-->
+						             <!--               <option value="320">Hưng Yên</option>-->
+						             <!--               <option value="321">Khánh Hòa</option>-->
+						             <!--               <option value="322">Kiên Giang</option>-->
+						             <!--               <option value="323">Kon Tum</option>-->
+						             <!--               <option value="304">Lai Châu</option>-->
+						             <!--               <option value="306">Lâm Đồng</option>-->
+						             <!--               <option value="305">Lạng Sơn</option>-->
+						             <!--               <option value="324">Lào Cai</option>-->
+						             <!--               <option value="325">Long An</option>-->
+						             <!--               <option value="326">Nam Định</option>-->
+						             <!--               <option value="327">Nghệ An</option>-->
+						             <!--               <option value="307">Ninh Bình</option>-->
+						             <!--               <option value="328">Ninh Thuận</option>-->
+						             <!--               <option value="329">Phú Thọ</option>-->
+						             <!--               <option value="308">Phú Yên</option>-->
+						             <!--               <option value="309">Quảng Bình</option>-->
+						             <!--               <option value="310">Quảng Nam</option>-->
+						             <!--               <option value="311">Quảng Ngãi</option>-->
+						             <!--               <option value="330">Quảng Ninh</option>-->
+						             <!--               <option value="312">Quảng Trị</option>-->
+						             <!--               <option value="313">Sóc Trăng</option>-->
+						             <!--               <option value="331">Sơn La</option>-->
+						             <!--               <option value="332">Tây Ninh</option>-->
+						             <!--               <option value="333">Thái Bình</option>-->
+						             <!--               <option value="334">Thái Nguyên</option>-->
+						             <!--               <option value="335">Thanh Hóa</option>-->
+						             <!--               <option value="303">Thừa Thiên Huế</option>-->
+						             <!--               <option value="336">Tiền Giang</option>-->
+						             <!--               <option value="314">Trà Vinh</option>-->
+						             <!--               <option value="315">Tuyên Quang</option>-->
+						             <!--               <option value="337">Vĩnh Long</option>-->
+						             <!--               <option value="338">Vĩnh Phúc</option>-->
+						             <!--               <option value="339">Yên Bái</option>-->
+													      <!--      </select>-->
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Số điện thoại</label>-->
+									<!--									<div class="col-sm-8">-->
+									<!--										<input class="form-control" type="text">-->
+
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--						<div class="col-sm-9 col-sm-offset-3">-->
+									<!--							<button class="btn btn-default">Lưu</button>-->
+									<!--						</div>-->
+									<!--					</div>-->
+
+
+
+									<!--			</form>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--</div>-->
+
+									<!--<div class="tab-pane fade" id="vtab3">-->
+									<!--	<div class="row">-->
+									<!--		<h3 class="title">Phương thức thanh toán</h3>-->
+									<!--		<div class="separator-2"></div>-->
+									<!--		<div class="col-md-5">-->
+									<!--			<form class="form-horizontal" accept-charset="UTF-8">-->
+									<!--				<h4>Tài khoản thanh toán</h4>-->
+									<!--					<div class="form-group">-->
+									<!--						<div class="small col-xs-6 col-md-12">-->
+									<!--							<h6 style="margin-bottom:0">MASTER CARD xxx-1234-->
+									<!--							</h6>-->
+
+									<!--							<span>Chủ thẻ: <b>DO NGOC DUC</b></span>-->
+									<!--							<br>-->
+									<!--							<span>Hạn đến: 12/17</span>-->
+									<!--							<br>-->
+
+									<!--							<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+									<!--							<br>-->
+									<!--						</div>-->
+
+									<!--						<div class="small col-xs-6 col-md-12">-->
+									<!--							<h6 style="margin-bottom:0">MASTER CARD xxx-1234-->
+									<!--							</h6>-->
+
+									<!--							<span>Chủ thẻ: <b>DO NGOC DUC</b></span>-->
+									<!--							<br>-->
+									<!--							<span>Hạn đến: 12/17</span>-->
+									<!--							<br>-->
+
+									<!--							<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+									<!--							<br>-->
+									<!--						</div>-->
+
+									<!--						<div class="small col-xs-6 col-md-12">-->
+									<!--							<h6 style="margin-bottom:0">MASTER CARD xxx-1234-->
+									<!--							</h6>-->
+
+									<!--							<span>Chủ thẻ: <b>DO NGOC DUC</b></span>-->
+									<!--							<br>-->
+									<!--							<span>Hạn đến: 12/17</span>-->
+									<!--							<br>-->
+
+									<!--							<a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Sửa</a> <a class="btn btn-sm-link" style="padding: 0 1em 0 0; margin: 0.5em 0; text-decoration: underline">Xóa</a>-->
+									<!--							<br>-->
+									<!--						</div>-->
+
+
+									<!--					</div>-->
+
+									<!--			</form>-->
+									<!--			<div style="line-height:25%;">-->
+									<!--				<br>-->
+									<!--			</div>-->
+									<!--		</div>-->
+
+									<!--		<div class="col-md-7">-->
+									<!--			<form class="form-horizontal" accept-charset="UTF-8">-->
+									<!--					<h4>Thêm phương thức thanh toán</h4>-->
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Số thẻ</label>-->
+									<!--									<div class="col-sm-8">-->
+									<!--										<input class="form-control" type="text">-->
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Hạn đến</label>-->
+									<!--									<div class="col-sm-8">-->
+									<!--										<select class="form-control" style="width: 30%; display: inline">-->
+									<!--											<option value="" selected="" disabled="">Tháng</option>-->
+									<!--											<option value="1">1</option>-->
+									<!--											<option value="2">2</option>-->
+									<!--											<option value="3">3</option>-->
+									<!--											<option value="4">4</option>-->
+									<!--											<option value="5">5</option>-->
+									<!--											<option value="6">6</option>-->
+									<!--											<option value="7">7</option>-->
+									<!--											<option value="8">8</option>-->
+									<!--											<option value="9">9</option>-->
+									<!--											<option value="10">10</option>-->
+									<!--											<option value="11">11</option>-->
+									<!--											<option value="12">12</option>-->
+									<!--										</select>-->
+									<!--										<select class="form-control" style="width: 25%; display: inline">-->
+									<!--											<option value="" selected="" disabled="">Năm</option>-->
+									<!--											<option value="2017">2017</option>-->
+									<!--											<option value="2018">2018</option>-->
+									<!--											<option value="2019">2019</option>-->
+									<!--											<option value="2020">2020</option>-->
+									<!--											<option value="2021">2021</option>-->
+									<!--										</select>-->
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Tên chủ thẻ</label>-->
+									<!--									<div class="col-sm-8">-->
+									<!--										<input class="form-control" type="text">-->
+
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--									<label class="col-sm-3 control-label">Mã CVV/CVV2</label>-->
+									<!--									<div class="col-sm-8">-->
+									<!--										<input class="form-control" style="width: 5em" type="text" maxlength=3>-->
+
+									<!--									</div>-->
+									<!--					</div>-->
+
+									<!--					<div class="form-group">-->
+									<!--						<div class="col-sm-9 col-sm-offset-3">-->
+									<!--							<button class="btn btn-default">Lưu</button>-->
+									<!--						</div>-->
+									<!--					</div>-->
+
+
+
+									<!--			</form>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--</div>-->
+
+									<div class="tab-pane fade" id="lich-su-mua-hang">
+										<h3 class="title">Lịch sử mua hàng</h3>
+										<span>Tổng cộng <span id="total-order-count"></span> sản phẩm</span>
+										<div class="separator-2"></div>
+										<div class="table-responsive" id="order-history">
+											<table class="table table-hover sortable">
+												<thead>
+													<tr>
+														<th data-defaultsort="desc" data-defaultsign="reversed">Ngày</th>
+														<th data-defaultsign="reversed">Mã đơn hàng</th>
+														<th data-defaultsign="reversed">Sản phẩm</th>
+														<th data-defaultsign="reversed">Số lượng</th>
+														<th data-defaultsign="reversed">Tổng cộng</th>
+														<th data-defaultsign="reversed">Trạng thái</th>
+													</tr>
+												</thead>
+												<tbody>
+													<%@line_items.each do |item|%>
+														<tr>
+															<td data-dateformat="hh:mm DD/MM/YYYY"><%= format_time(item.created_at) %></td>
+															<td><%= item.order.confirmation %></td>
+															<td><%= item.subproduct.product.title %></td>
+															<td><%= item.quantity %></td>
+															<td data-value="<%=item.total_price%>"><%= formatted_price(item.total_price) %></td>
+															<td><%= item.status %></td>
+														</tr>
+													<% end %>
+													
+
+
+												</tbody>
+											</table>
+											<style>
+												#order-history::-webkit-scrollbar {
+												    -webkit-appearance: none;
+												}
+
+												#order-history::-webkit-scrollbar:vertical {
+												    width: 12px;
+												}
+
+												#order-history::-webkit-scrollbar:horizontal {
+												    height: 12px;
+												}
+
+												#order-history::-webkit-scrollbar-thumb {
+												    background-color: rgba(0, 0, 0, .5);
+												    border-radius: 10px;
+												    border: 2px solid #ffffff;
+												}
+
+												#order-history::-webkit-scrollbar-track {
+												    border-radius: 10px;
+												    background-color: #ffffff;
+												}
+												.tab-content .tab-pane {
+													   margin-top:-500px;padding-top:500px
+												}
+											</style>
+										</div>
+									</div>
+
+									<!--<div class="tab-pane fade" id="vtab5">-->
+									<!--	<h3 class="title">Danh sách ưa thích</h3>-->
+									<!--	<div class="separator-2"></div>-->
+									<!--	<div class="row">-->
+									<!--		<div class="col-md-4 col-xs-6 text-center">-->
+									<!--			<img src="http://placehold.it/300x450" class="img-responsive">-->
+
+									<!--			<span><b>Váy XX</b></span>-->
+									<!--			<br>-->
+									<!--			<span>500.000đ</span>-->
+									<!--			<br>-->
+
+									<!--			<a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Đặt mua</a> <a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Xóa</a>-->
+									<!--			<br>-->
+									<!--		</div>-->
+
+									<!--		<div class="col-md-4 col-xs-6 text-center">-->
+									<!--			<img src="http://placehold.it/300x450" class="img-responsive">-->
+
+									<!--			<span><b>Váy XX</b></span>-->
+									<!--			<br>-->
+									<!--			<span>500.000đ</span>-->
+									<!--			<br>-->
+
+									<!--			<a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Đặt mua</a> <a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Xóa</a>-->
+									<!--			<br>-->
+									<!--		</div>-->
+
+									<!--		<div class="col-md-4 col-xs-6 text-center">-->
+									<!--			<img src="http://placehold.it/300x450" class="img-responsive">-->
+
+									<!--			<span><b>Váy XX</b></span>-->
+									<!--			<br>-->
+									<!--			<span>500.000đ</span>-->
+									<!--			<br>-->
+
+									<!--			<a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Đặt mua</a> <a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Xóa</a>-->
+									<!--			<br>-->
+									<!--		</div>-->
+
+									<!--		<div class="col-md-4 col-xs-6 text-center">-->
+									<!--			<img src="http://placehold.it/300x450" class="img-responsive">-->
+
+									<!--			<span><b>Váy XX</b></span>-->
+									<!--			<br>-->
+									<!--			<span>500.000đ</span>-->
+									<!--			<br>-->
+
+									<!--			<a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Đặt mua</a> <a class="btn btn-md-link" style="padding: 0 15px 7px; margin-top: 0; text-decoration: underline">Xóa</a>-->
+									<!--			<br>-->
+									<!--		</div>-->
+
+
+
+
+									<!--	</div>-->
+									<!--</div>-->
+
+								</div>
+							</div>
+							<!-- tabs end -->
+
+
+						</div>
+						<!-- main end -->
+
+					</div>
+				</div>
+			</section>
+			<!-- main-container end -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js'></script>
+<%= javascript_include_tag 'bootstrap-sortable.min.js', 'data-turbolinks-track' => true %>
+
+<script>
+ //   $(function(){
+	// 	var control = $('#show-password-my-account');
+
+ //       control.bind('click', function () {
+ //           if (control.is(':checked')) {
+ //               $('#password-my-account').attr('type', 'text');
+ //               $('#confirm-password-my-account').attr('type', 'text');
+ //           } else {
+ //               $('#password-my-account').attr('type', 'password');
+ //               $('#confirm-password-my-account').attr('type', 'password');
+ //           }
+ //       });
+	// });
+</script>

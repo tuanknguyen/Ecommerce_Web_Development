@@ -1,0 +1,81 @@
+<table>
+  <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Size</th>
+      <th>Màu</th>
+      <th>Số lượng</th>
+      <th>Thành giá</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @line_items.each do |item|%>
+        <tr>
+          <td><%= item.subproduct.product.title%></td>
+          <td><%= item.subproduct.size%></td>
+          <td><%= item.subproduct.color%></td>
+          <td><%= item.quantity%></td>
+          <td><%= formatted_price(item.total_price) %></td>
+        </tr>
+    <% end %>
+    <% if @coupon %>
+      <tr>
+        <td>Coupon</td>
+        <td></td> <td></td> <td></td>
+        <td><%= @coupon.name %></td>
+      </tr>
+      <tr>
+      <td><strong>Tổng giá sản phẩm sau coupon</strong></td>
+      <td></td> <td></td> <td></td>
+      	<td><%= formatted_price(@total_item_price) %></td>
+      </tr>
+    <% end %>
+    <tr>
+    <td>Phí vận chuyển</td>
+    <td></td> <td></td> <td></td>
+    	<td><%= formatted_price(@shipping_fee) %></td>
+    </tr>
+    <tr>
+    <td><strong>Tổng cộng</strong></td>
+    <td></td> <td></td> <td></td>
+    	<td><%= formatted_price(@total_item_price + @shipping_fee) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <strong>Tên khách hàng:</strong>
+  <%= @order.user_name %>
+</p>
+
+<p>
+  <strong>Địa chỉ:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+  <strong>Số điện thoại:</strong>
+  <%= @order.telephone %>
+</p>
+
+<p>
+  <strong>Ghi chú:</strong>
+  <%= @order.note %>
+</p>
+
+<p>
+  <strong>Phương thức thanh toán:</strong>
+  <%= @order.method_of_payment %>
+</p>
+
+<p>
+  <strong>Mã số đơn hàng:</strong>
+  <%= @order.confirmation %>
+</p>
+
+<p>
+  <strong>Theo dõi trạng thái đơn hàng tại:</strong>
+  <%= link_to "Link theo dõi","http://fathang.com/orders/lookup/" +  @order.confirmation , method: :get%>
+</p>
+<p>Fa# Team</p>

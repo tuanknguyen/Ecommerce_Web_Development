@@ -1,0 +1,25 @@
+$(document).ready(function() {
+  $("#sizes_select").change(function() {
+    if ($(this).find("option:selected")) {
+      return $.ajax({
+        type: 'GET',
+        dataType: 'script',
+        data: {
+          size_chosen: $("#sizes_select option:selected").val()
+        }
+      });
+    }
+  });
+  return $("#colors_select").change(function() {
+    if ($(this).find("option:selected") && $("#sizes_select").find("option:selected")) {
+      return $.ajax({
+        type: 'GET',
+        dataType: 'script',
+        data: {
+          size_chosen: $("#sizes_select option:selected").val(),
+          color_chosen: $("#colors_select option:selected").val()
+        }
+      });
+    }
+  });
+});

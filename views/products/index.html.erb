@@ -1,0 +1,38 @@
+<table class="table table-hover table-striped table-colored">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Ảnh</th>
+      <th>Giá gốc</th>
+      <th>Miêu tả</th>
+      <th>Giảm giá</th>
+      <th>Phân loại</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %> </td>
+        <td><%= image_tag(product.image_url, height: '100', width: '100') %></td>
+        <td><%= formatted_price(product.price) %></td>
+        <td><%= truncate(product.description, length: 50) %></td>
+        <td><%= product.discount %> %</td>
+        <td>
+          <% product.category_ids.each do |category_id| %>
+            <%= Category.find_by_id(category_id).name %>, 
+          <% end %>
+        </td>
+        
+        <td><%= link_to 'Sửa', edit_product_path(product), class: "btn btn-default" %></td>
+        <td><%= link_to 'Xóa', {:controller => "products", :action => "make_inactive", :id => product.id}, data: { confirm: 'Bạn có chắc chắn muốn xóa sản phẩm này?' }, class: "btn btn-default"   %></td>
+        <!--'products/make_inactive/'+product.id.to_s-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to 'Tạo sản phẩm mới', new_product_path, method: :get, class: "btn btn-default" %>

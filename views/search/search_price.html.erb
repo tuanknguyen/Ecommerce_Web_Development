@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+<section class="main-container">
+		<div class="container">
+			<div class="row">
+
+				<!-- main start -->
+				<!-- ================ -->
+				<div class="main col-md-12">
+					<!-- pills start -->
+					<!-- ================ -->
+					<!-- Nav tabs -->
+					<ul class="nav nav-pills" role="tablist">
+						<li class="active"><a href="#pill-1" role="tab" data-toggle="tab" title="Latest Arrivals"><i class="icon-star"></i> Latest Arrivals</a></li>
+						<li><a href="#pill-2" role="tab" data-toggle="tab" title="Featured"><i class="icon-heart"></i> Featured</a></li>
+						<li><a href="#pill-3" role="tab" data-toggle="tab" title="Top Sellers"><i class=" icon-up-1"></i> Top Sellers</a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content clear-style">
+						<div class="tab-pane active" id="pill-1">						
+							<div class="row masonry-grid-fitrows grid-space-10">
+							  <% @products.each do |product| %>
+  								<div class="col-md-4 masonry-grid-item">
+  									<div class="listing-item white-bg bordered mb-20">
+  										<div class="overlay-container">
+  										  <%= image_tag(product.image_url, height: '900', width: '600') %>
+  											<a class="overlay-link popup-img-single" href="<% image_tag(product.image_url)%>"><i class="fa fa-search-plus"></i></a>
+  											<span class="badge">30% OFF</span>
+  											<div class="overlay-to-top links">
+  												<span class="small">
+  													<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+  													<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+  												</span>
+  											</div>
+  										</div>
+  										<div class="body">
+  											<h3><a href="shop-product.html"><%= product.title %></a></h3>
+  											<p class="small"><%= product.description %></p>
+  											<div class="elements-list clearfix">
+  												<span class="price"><%= product.price %></span>
+  												<% if session[:user_id] %>
+	  												<%= button_to line_items_path(product_id: product), remote: true , class: "pull-right margin-clear btn btn-sm btn-default-transparent btn-animated", id: "addtocart" do  %>
+	  											   Add to cart <i class="fa fa-shopping-cart"></i>
+	  											  <% end %>
+
+	  											<% else %>
+	  											  <%= button_to line_items_path(product_id: product) , class: "pull-right margin-clear btn btn-sm btn-default-transparent btn-animated", id: "addtocart" do  %>
+		  											   Add to cart <i class="fa fa-shopping-cart"></i>
+		  											   <% end %>
+  											  <% end %>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  							<% end %>
+							</div>
+						</div>
+					</div>
+					<!-- pills end -->
+					<!-- pagination start -->
+					<nav class="text-center">
+						<ul class="pagination">
+							<li><a href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>
+						</ul>
+					</nav>
+					<!-- pagination end -->
+				</div>
+				<!-- main end -->
+
+			</div>
+		</div>
+	</section>
+<script type="text/javascript">
+	$('#addtocart').click(function(alert("Add to cart completed"));
+</script>

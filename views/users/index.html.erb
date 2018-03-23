@@ -1,0 +1,35 @@
+<h1>Listing Users</h1>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>User name</th>
+      <th>Address</th>
+      <th>Cart Id</th>
+      <th>Phone Number</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.user_name %></td>
+        <td><%= user.address %></td>
+        <td><%= user.cart_id %></td>
+        <td><%= user.telephone %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

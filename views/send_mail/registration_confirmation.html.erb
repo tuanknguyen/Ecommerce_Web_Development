@@ -1,0 +1,13 @@
+Xin chào <%=@user.user_name%>,
+<p>Cảm ơn bạn đã đăng ký tài khoản với Fa#. Bạn hãy click vào link sau đây để xác nhận email và hoàn tất việc đăng ký.</p>
+<p>
+<!------------- C9------------------->
+<!--Link confirm: <%= link_to "Xác nhận","https://dearemalpha-venusto.c9users.io/sessions/confirm_account/" +  @user.id.to_s , method: :post%>-->
+<!------------------------------------------------>
+
+<!-------------Deploy to Heroku------------------->
+Link confirm: <%= link_to "Xác nhận","http://fathang.com/sessions/confirm_account/" +  @user.id.to_s , method: :post%>
+<!------------------------------------------------>
+</p>
+<p>Mã giới thiệu của bạn là: <%= @user.invitation_code %></p>
+<p>Fa# Team</p>

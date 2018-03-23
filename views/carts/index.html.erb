@@ -1,0 +1,22 @@
+<h1>Listing Carts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>User Id</td>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carts.each do |cart| %>
+      <tr>
+        <td><%= cart.user_id %></td>
+        <td><%= link_to 'Show', cart %></td>
+        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

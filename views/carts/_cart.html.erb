@@ -1,0 +1,21 @@
+<thead>
+	<tr>
+		<th class="quantity">Lượng</th>
+		<th class="product">Sản phẩm</th>
+		<th class="amount">Giá</th>
+	</tr>
+</thead>
+<tbody>
+<% @cart.cart_items.each do |item| %>
+	<tr>
+		<td class="quantity"><%= item.quantity %> x</td>
+		<td class="product"><%= item.subproduct.product.title %><span class="small"><%= truncate(strip_tags(item.subproduct.product.description), length: 30)%></span></td>
+		<td class="amount"><%= formatted_price(item.total_price)%></td>
+	</tr>
+<% end %>
+	<tr>
+		<td class="total-quantity" colspan="2">Tổng cộng <%= @cart.cart_items.count %> sản phẩm</td>
+		<td class="total-amount"><%= formatted_price(@cart.total_price) %></td>
+	</tr>
+
+</tbody>

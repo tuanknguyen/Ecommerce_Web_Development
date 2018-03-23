@@ -1,0 +1,178 @@
+<section class="main-container">
+  <div class="container">
+  	<div class="row">
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h3>Đã có <%=@order.errors.count%> lỗi xảy ra:</h3>
+          <ul>
+          <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+  		<div class="main col-md-12">
+  			<h1 class="page-title">Thanh toán</h1>
+  			<div class="separator-2"></div>
+  			<table class="table cart">
+  				<thead>
+  					<tr>
+  						<th>Sản phẩm </th>
+  						<th>Giá </th>
+  						<th>Số lượng</th>
+  						<th>Giảm</th>
+  						<th class="amount">Thành giá </th>
+  					</tr>
+  				</thead>
+  				<tbody>
+  				  <% @cart.cart_items.each do |item| %>
+  						<tr>
+  							<td class="product"><%= item.subproduct.product.title %><small><%= item.subproduct.product.description %></small></td>
+  							<td class="price"><%= formatted_price(item.subproduct.product.price * (100 -item.subproduct.product.discount) /100) %></td>
+  							<td class="quantity">
+  								<div class="form-group">
+  									<input type="text" class="form-control" value="<%= item.quantity %>" disabled >
+  								</div>											
+  							</td>
+  							<td class="price"><%= formatted_price(item.subproduct.product.price * item.subproduct.product.discount / 100) %></td>
+  							<td class="amount"><%= formatted_price(item.total_price) %></td>
+  						</tr>
+            <% end %>
+            <% if @coupons.present? %>  
+              <tr>
+                <td colspan="3">Coupon</td>
+                <td><%= collection_select(:name, :id, @coupons, :id, :name, {prompt: 'Chọn coupon'}, {class: 'form-control'}) %></td>
+                <td></td>
+              </tr>
+            <% end %>
+            <tr id="row-total-amount-without-ship" style="display:none;">
+              <td class="product" colspan="4"><strong>Tổng cộng <%= @count_item %> sản phẩm</strong></td>
+  						<td class="amount" id="total-amount-without-ship"></td>
+            </tr>
+            <tr>
+  						<td class="product" colspan="4">Phí vận chuyển trong HN <br><a target="_blank" href='/static_pages/policy#shipping'>Xem phí ngoài HN</a></td>
+  						<td class="amount"><%= formatted_price(@shipping_fee) %></td>
+  					</tr>
+            <tr>
+              <!--co 3 cot o giua chu tong cong va gia-->
+  						<td class="total-quantity" colspan="4">Thành tiền</td>
+  						<td class="total-amount"><%= formatted_price(@cart.total_price) %></td>
+  					</tr>
+  				</tbody>
+  			</table>
+  			<div class="space-bottom"></div>
+  			<%= form_for @order, html: { class: "form-horizontal"} do |f| %>
+    			<fieldset>
+    				<legend>Thông tin thanh toán</legend>
+  						<div class="row">
+  							<div class="col-lg-3">
+  								<h3 class="title">Thông tin khách hàng</h3>
+  							</div>
+  							<div class="col-lg-8 col-lg-offset-1">
+  								<div class="form-group">
+  									<%= f.label :user_name, "Họ và tên", class: "col-md-2 control-label", for: "user_name" %>
+  									<div class="col-md-10">
+  										<%= f.text_field :user_name, class: "form-control",id: "user_name" , value: "#{@user.user_name if @user}" %>
+  									</div>
+  								</div>
+  								<div class="form-group">
+  									<%= f.label :address, "Địa chỉ", class: "col-md-2 control-label", for: "address" %>
+  									<div class="col-md-10">
+  										<%= f.text_area :address, class: "form-control",id: "address" , value: "#{@user.address if @user}" %>
+  									</div>
+  								</div>
+  								<div class="form-group">
+  									<%= f.label :telephone, "Số điện thoại", class: "col-md-2 control-label", for: "telephone" %>
+  									<div class="col-md-10">
+  										<%= f.text_field :telephone, class: "form-control", id: "telephone", value: "#{@user.telephone if @user}"  %>
+  									</div>
+  								</div>
+                  <div class="form-group">
+                    <%= f.label :user_name, "Email", class: "col-md-2 control-label", for: "user_email" %>
+                    <div class="col-md-10">
+                      <%= f.text_field :user_email, class: "form-control",id: "user_email" , value: "#{@user.email if @user}" %>
+                    </div>
+                  </div>
+  								<div class="form-group">
+  									<%= f.label :note, "Ghi chú", class: "col-md-2 control-label", for: "note" %>
+  									<div class="col-md-10">
+  										<%= f.text_area :note, class: "form-control", id: "note", placeholder: "Thời gian giao hàng phù hợp, hướng dẫn tìm nhà, v..v"%>
+  									</div>
+  								</div>
+                  <div class="form-group">
+                    <%= f.label :method_of_payment, "Phương thức thanh toán", class: "col-md-2 control-label" %>
+                    <div class="col-md-10">
+                      <%= f.select :method_of_payment, Order::PAYMENT_TYPES, {}, {class:"form-control"} %>
+                    </div>
+                  </div>
+  								<!--only super admin can change order status-->
+                  <% if session[:user_id] %>
+                    <% if User.find(session[:user_id]) %>
+                      <% if User.find(session[:user_id]).roles_mask > 2%> 
+                        <div class="form-group">
+                          <%= f.label :status, "Trạng thái đơn hàng", class: "col-md-2 control-label" %>
+                          <div class="col-md-10">
+                             <%= f.select :status, Order::STATUS, {prompt: "Chọn trạng thái"}, {class:"form-control"} %>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+  								
+  							</div>
+  						</div>
+    			</fieldset>
+    			<div class="text-right">	
+    				<%= link_to  @cart, class: "btn btn-grou btn-default", method: :get do  %> 
+    				  Xem giỏ hàng
+    				<% end %>
+    				<%= f.submit "Hoàn tất",  class: "btn btn-group btn-default" do %>
+    				  <i class="icon-right-open-big"></i>
+    				<% end %>
+    			</div>
+    		<%= hidden_field_tag :coupon_id %>
+  		<% end %>
+  		</div>
+  	</div>
+  </div>
+</section>
+<%= hidden_field_tag 'total_amount_default' %>
+
+<script>
+  $('#total_amount_default').val($('.total-amount').html());
+  total_amount_default = $('.total-amount').html();
+  
+  use_coupon();
+  
+  $('#name_id').change(function(){
+    use_coupon();
+  });
+    
+  function use_coupon(){
+    var coupon_id = $("#name_id option:selected" ).val();
+    var total_amount = total_amount_default;
+    $('#coupon_id').val(coupon_id)
+    $.ajax({
+      type: 'GET',
+      url: '/orders/total_amount',
+      data: { 'coupon_id': coupon_id,
+              'total_amount': total_amount 
+            },
+      dataType: 'json',
+      success: function(data){
+          var format_price = function(x){
+            return (x).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')+'đ'
+          };
+           $('.total-amount').html(format_price(Math.ceil(data/100)*100+<%=@shipping_fee%>));
+           
+           if(coupon_id !== "") {
+             $('#row-total-amount-without-ship').css({'display':'table-row'});
+             $('#total-amount-without-ship').html(format_price(Math.ceil(data/100)*100));
+           }
+           else {
+             $('#row-total-amount-without-ship').css({'display':'none'});
+           }
+      }
+    });
+  }
+</script>

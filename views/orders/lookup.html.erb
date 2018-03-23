@@ -1,0 +1,78 @@
+<section class="main-container">
+<div class="container">
+	<div class="row">
+		<!-- main start -->
+		<!-- ================ -->
+		<div class="main col-md-12">
+			<!-- page-title start -->
+			<!-- ================ -->
+			<h1 class="page-title">Chi tiết đơn hàng</h1>
+			<p id="notice"><%= notice %></p>
+			<div class="separator-2"></div>
+			<!-- page-title end -->
+			<table class="table cart table-hover table-colored">
+				<thead>
+					<tr>
+						<th>Sản phẩm</th>
+						<th>Size</th>
+						<th>Màu</th>
+            <th>Số lượng</th>
+            <th>Thành giá</th>
+					</tr>
+				</thead>
+				<tbody>
+          <% @order.line_items.each do |item|%>
+              <tr>
+                <td><%= item.subproduct.product.title%></td>
+                <td><%= item.subproduct.size%></td>
+                <td><%= item.subproduct.color%></td>
+                <td><%= item.quantity%></td>
+                <td><%= formatted_price(item.total_price) %></td>
+              </tr>
+          <% end %>
+          <tr>
+          <% if @coupon %>
+            <tr>
+              <td>Coupon</td>
+              <td></td> <td></td> <td></td>
+              <td><%= @coupon.name %></td>
+            </tr>
+            <tr>
+            <td><strong>Tổng giá sản phẩm sau coupon</strong></td>
+            <td></td> <td></td> <td></td>
+            	<td><%= formatted_price(@total_item_price) %></td>
+            </tr>
+          <% end %>
+          <td>Phí vận chuyển</td>
+          <td></td> <td></td> <td></td>
+          	<td><%= formatted_price(@shipping_fee) %></td>
+          </tr>
+          <tr>
+          <td><strong>Tổng cộng</strong></td>
+          <td></td> <td></td> <td></td>
+          	<td><%= formatted_price(@total_item_price + @shipping_fee) %></td>
+          </tr>
+        </tbody>
+			</table>
+
+			<p>
+        <strong>Khách hàng:</strong>
+        <%= @order.user_name %>
+      </p>
+      
+      <p>
+        <strong>Phương thức giao dịch:</strong>
+        <%= @order.method_of_payment %>
+      </p>
+      
+      <p>
+        <strong>Trạng thái đơn hàng:</strong>
+        <%= @order.status %>
+      </p>
+		</div>
+		<!-- main end -->
+
+	</div>
+</div>
+</section>
+

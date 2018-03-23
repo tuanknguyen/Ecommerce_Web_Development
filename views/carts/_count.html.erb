@@ -1,0 +1,7 @@
+<span class="cart-count default-bg">
+<% if @cart.cart_items.count != 0%>
+	<%= @cart.cart_items.count %> 
+<% else %>
+	0
+<% end %>
+</span>

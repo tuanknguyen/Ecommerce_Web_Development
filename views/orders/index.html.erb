@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-title">Danh sách đơn hàng</h1>
+
+<table class="table table-hover table-striped table-colored">
+  <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Size</th>
+      <th>Màu</th>
+      <th>Trạng thái</th>
+      <th>Ngày mua</th>
+      <th colspan="1"></th>
+      <!--Only super admin can see address and phone.-->
+      <% if User.find(session[:user_id]).roles_mask == 3 %>
+        <th>Tên khách hàng</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>  
+        <th>Ghi chú</th>
+        <th>Trạng thái đơn hàng</th>
+        <th colspan="2"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <% LineItem.all.where(order_id: order.id).each do |item|%>
+        <% if item.subproduct.product.admin_id == session[:user_id] or User.find(session[:user_id]).roles_mask == 3%>
+          <tr>
+            <td><%= item.subproduct.product.title %></td>
+            <td><%= item.subproduct.size %></td>
+            <td><%= item.subproduct.color %></td>
+            <td><%= item.status %></td>
+            <td><%= format_time(order.created_at) %></td>
+            <td><%= link_to 'Cập nhật', edit_line_item_path(item) , class: "btn btn-default"%></td>
+            
+            <!--Only super admin can destroy order. Might destroy other admin's order by same user-->
+            <% if User.find(session[:user_id]).roles_mask == 3 %>
+              <td><%= order.user_name %></td>
+              <td><%= order.address %></td>
+              <td><%= order.telephone %></td>
+              <td><%= order.note %></td>
+              <td><%= order.status %></td>
+              <td><%= link_to 'Cập nhật đơn hàng', edit_order_path(order) %></td>
+              <td><%= link_to 'Xoá', order, method: :delete, data: { confirm: 'Nguy hiểm! Xóa toàn bộ đơn hàng và tất cả sản phẩm có trong đơn hàng đó?' } %></td>
+            <% end %>
+
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<!--<br>-->

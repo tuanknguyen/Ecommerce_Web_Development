@@ -1,0 +1,11 @@
+<%= form_tag class: "login-form margin-clear" do %>
+  <div class="field">
+    <%= label_tag :user %><br>
+    <%= select_tag "user", options_from_collection_for_select(@users, "id", "user_name"), prompt: "Chọn user", class:"form-control" %>
+  </div>
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-group btn-default btn-animated") do %>
+      <i class="fa fa-user"></i> Send 
+    <% end %>
+  </div>
+<% end %>

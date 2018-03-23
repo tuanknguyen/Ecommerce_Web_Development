@@ -1,0 +1,257 @@
+<%= form_for @product , html: { class: "form-horizontal", multipart: true } do |f| %> 
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h3>Đã có <%=@product.errors.count%> lỗi xảy ra:</h3>
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><b>Thông tin chung về sản phẩm (bắt buộc)</b></p>
+
+  <div class="form-group">
+    <%= f.label :title, "Tên sản phẩm*",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_field :title, class: "form-control" , id: "title", :required => true %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="product_image_url">Ảnh chính*<br/>(jpg, jpeg, png, gif)</label>
+    <div class="col-sm-8">
+      <label for="image_url" class="btn btn-default">Thay ảnh chính</label>
+      <%= f.file_field :image_url, style: "display: none",class: "form-control" , id: "image_url", :onchange => "readURL(this)", :accept =>'image/jpeg,image/pjpeg,image/png,image/gif'%>
+      <br/>
+      <div id="current-product-image">
+        <%= image_tag(@product.image_url, style: "width: 75px; height: 112.5px") %>
+      </div>
+      <div id="new-image-preview" style="display: none">
+        
+        
+        <a href="#" class="btn-md-link" style="color: #dc5b5b" onclick="resetFormElement($('#image_url'))">Chọn lại</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="product_more_images">Các ảnh khác<br/>(jpg, jpeg, png, gif)</label>
+    <div class="col-sm-8">
+      <label for="more_images" class="btn btn-default">Thêm ảnh khác</label>
+      <%= f.file_field :more_images, style: "display: none", :onchange => "readURL_multiple(this)", multiple: true, class: "form-control" , id: "more_images", :accept =>'image/jpeg,image/pjpeg,image/png,image/gif' %>
+      <br/>
+      <div id="current-product-more-images" class="row">
+        <% @product.more_images.each_with_index do |image_url, index| %>
+          <div id="more-image-<%=index%>" class="col-sm-3">
+              <%= image_tag(image_url, style: "padding-bottom: 5px; width: 75px; height: 112.5px") %>
+              <!--<a href="#" class="btn-md-link" style="color: #dc5b5b; padding-bottom: 5px">Xoá</a>-->
+              <%= link_to "Xóa", product_more_image_path(@product, index), remote: true, :method => :delete, class: "btn-md-link", style: "color: #dc5b5b; padding-bottom: 5px", onclick: 'tempDisableButton(this)'%>
+          </div>
+        <% end %>
+        <style>
+          [id^='more-image'].col-sm-3 {
+            padding-right: 5px;
+            padding-bottom: 15px;
+          }
+        </style>
+      </div>
+      <br />
+      <div id="preview-product-more-images" style="display: none">
+        <div id="new-product-more-images" class="row">
+          
+          
+        </div>
+        <a href="#" class="btn-md-link" style="color: #dc5b5b" onclick="resetFormElement_multiple($('#more_images'))">Chọn lại</a>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :price, "Giá (VNĐ)*",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <!-- the precision is to ensure that price is displayed as an integer even in edit form, thus avoiding conflict with validation -->
+      <%= f.number_field :price, class: "form-control" , id: "price", :required => true, :value => (number_with_precision(f.object.price, :precision => 0) || nil) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :description, "Miêu tả chung*",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_area :description, class: "form-control" , id: "description", rows: 4, :required => true %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :discount, "Giảm giá (%)*",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.number_field :discount, class: "form-control" , id: "discount", in: 0...100, step: 5, :value => (f.object.discount || 0) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :categories, "Phân loại*",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %> <br>
+    </div>
+  </div>
+  
+  <!--Adding subproudcts-->
+  <p><b>Liệt kê size/màu sản phẩ̉m*</b></p>
+  
+  <div class="form-group" style="margin: 0px">
+    <%= f.fields_for :subproducts do |subproduct| %>
+      <%= render 'subproduct_fields', f: subproduct %>
+    <% end %>
+    
+    <div class="new-subproducts"><%= link_to_add_association 'Thêm', f, :subproducts, class: "btn btn-danger", style: 'color:white !important' %></div>
+  </div>
+  <!--End of adding subproudct-->
+  
+  <!--Optional product details-->
+  <p><b>Thông tin chi tiết sản phẩm</b></p>
+  <div class="form-group">
+    <%= f.label :material, "Chất liệu",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_field :material, class: "form-control" , id: "material", placeholder: "VD: 80% cottton, 20% nylon." %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :origin, "Xuất xứ",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_field :origin, class: "form-control" , id: "origin", placeholder: "Tên shop của bạn hoặc nguồn gốc sản phẩm"%>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ngmau, "Người mẫu",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_area :ngmau, class: "form-control" , id: "ngmau", placeholder: "VD: Người mẫu cao 1m65, nặng 45-50kg, đang mặc cỡ S." %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :size_guide, "Kích thước cỡ",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_area :size_guide, class: "form-control" , id: "size_guide", placeholder: "VD: S: ngực 80cm, eo 60cm, tay dài 20cm.\nM: ngực 85cm, eo 65cm, tay dài 23cm." %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :washing_guide, "Hướng dẫn giặt",  class: "col-sm-3 control-label"%>
+    <div class="col-sm-8">
+      <%= f.text_field :washing_guide, class: "form-control" , id: "washing_guide", placeholder: "VD: Chỉ được giặt tay với nước ấm." %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <%= submit_tag "Hoàn tất", class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function (e) {
+        $('#current-product-image').hide();
+        $('#new-product-image').remove();
+        $('#new-image-preview').prepend('<img id="new-product-image" src="<%=image_path('loading.svg')%>" alt="preview product image" class="lazyload" />')
+        $('#new-product-image')
+        .attr('data-src', e.target.result)
+        .width(75)
+        .height(112.5);
+        $('#new-image-preview').show();
+        
+      };
+      
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  
+  function readURL_multiple(input) {
+    $('#new-product-more-images').children("div").remove();
+    $('#preview-product-more-images').show();
+    function readAndPreview(file,idx) {
+      // Make sure `file.name` matches our extensions criteria
+      if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+        var reader = new FileReader();
+        $('#new-product-more-images').prepend('<div class="col-sm-3"><img id="new-product-more-image-'+idx+'" style="width: 75px; height: 112.5px;" src="/assets/loading-926a75e59f3ed594d4efba346cebd5a47ce950bf9166dec18fda15b827bdc9b4.svg" alt="preview product more image"/></div>');
+        reader.addEventListener("load", function () {
+          $('#new-product-more-image-'+idx).attr('data-src',this.result);
+          $('#new-product-more-image-'+idx).addClass('lazyload');
+          
+
+          
+        }, false);
+  
+        reader.readAsDataURL(file);
+      }
+  
+    }
+
+    if(input.files && input.files[0]) {
+      for(var i = 0; i < input.files.length; i++) {
+        readAndPreview(input.files[i], i);
+      }
+    }
+  }
+  
+  function resetFormElement(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
+    
+    $('#current-product-image').show();
+    $('#new-product-image').remove();
+    $('#new-image-preview').hide();
+  }
+  
+  function resetFormElement_multiple(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
+    
+    $('#new-product-more-images').children("div").remove();
+    $('#preview-product-more-images').hide();
+  }
+  
+  function tempDisableButton(e) {
+    $('[id^="more-image"]>a').addClass('inactive');
+    $(e).prev().attr('src', '<%=image_path('loading.svg')%>')
+  }
+</script>
+
+
+<style>
+  #subproduct_table_choose {
+    margin-bottom: 0px;
+    line-height: 1;
+  }
+  #subproduct_table_choose>tbody {
+    background-color: rgba(255,255,255,0);
+  }
+  #subproduct_table_choose, #subproduct_table_choose>tbody>tr>td, #subproduct_table_choose>thead>tr>th {
+    border-width: 0.5px;
+    border-color: rgba(177,177,177,0.3);
+    text-align: center;
+        line-height: 0.75;
+  }
+  #subproduct_table_choose>tbody>tr>td {
+    border-top: none;
+  }
+  #subproduct_table_choose>thead>tr>th {
+    border-bottom: none;
+    
+  }
+  [id^="more-image"]>a {
+     pointer-events: auto; 
+  }
+  [id^="more-image"]>a.inactive {
+     pointer-events: none; 
+  }
+</style>

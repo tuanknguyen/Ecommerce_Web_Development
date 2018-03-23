@@ -1,0 +1,84 @@
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+	<div class="container">
+		<div class="row">
+
+			<!-- main start -->
+			<!-- ================ -->
+			<div class="main col-md-8 space-bottom">
+			  <!-- page-title start -->
+				<!-- ================ -->
+				<h1 class="page-title">Liên hệ với chúng tôi</h1>
+				<div class="separator-2"></div>
+				<!-- page-title end -->
+				<p class="lead">Nếu bạn có bất cứ câu hỏi gì hãy điền vào form sau nhé, Fa# sẽ trả lời bạn trong thời gian sớm nhất!</p>
+				<div class="alert alert-success hidden" id="MessageSent">
+					Chúng tôi đã nhận được lời nhắn của bạn, Fa# sẽ liên lạc với bạn sớm nhất có thể.
+				</div>
+				<div class="alert alert-danger hidden" id="MessageNotSent">
+					Oops! Đã có lỗi, bạn gửi lại lời nhắn nhé!
+				</div>
+				<div class="contact-form">
+					<!--Contact us send mail form-->
+					<%= form_tag contact_us_mail_path, class: "margin-clear" do %>
+						<div class="form-group has-feedback">
+							<label for="name">Họ và Tên*</label>
+							<%= text_field_tag :name, params[:name], class: "form-control", id: "name", :required => true%>
+							<i class="fa fa-user form-control-feedback"></i>
+						</div>
+						<div class="form-group has-feedback">
+							<label for="email">Email*</label>
+							<%= email_field_tag :email, params[:email], class: "form-control", id: "email", :required => true%>
+							<i class="fa fa-envelope form-control-feedback"></i>
+						</div>
+						<div class="form-group has-feedback">
+							<label for="subject">Tiêu đề*</label>
+							<%= text_field_tag :subject, params[:subject], class: "form-control", id: "subject", :required => true%>
+							<i class="fa fa-navicon form-control-feedback"></i>
+						</div>
+						<div class="form-group has-feedback">
+							<label for="message">Nội dung*</label>
+							 <%= text_area_tag :message, params[:message],class: "form-control", rows: 6, id: "message", :required => true%>
+							<i class="fa fa-pencil form-control-feedback"></i>
+						</div>
+						<button type="submit" class="submit-button btn btn-default">Hoàn tất</button>
+					<% end %>
+					<!--End contact us send mail form-->
+				</div>
+			</div>
+			<!-- main end -->
+
+			<!-- sidebar start -->
+			<!-- ================ -->
+			<aside class="col-md-3 col-lg-offset-1">
+				<div class="sidebar">
+					<div class="side vertical-divider-left">
+						<h3 class="title logo-font"> <span class="text-default">Fashion#</span></h3>
+						<div class="separator-2 mt-20"></div>
+						<ul class="list">
+							<li><i class="fa fa-home pr-10"></i>25 Trần Khát Chân,<br><span class="pl-20">Hai Bà Trưng, Hà Nội</span></li>
+							<!--<li><i class="fa fa-phone pr-10"></i><abbr title="Phone">P:</abbr> (04) 3 456-7890</li>-->
+							<li><i class="fa fa-mobile pr-10 pl-5"></i><abbr title="Phone">M:</abbr> 090 628-3622</li>
+							<li><i class="fa fa-envelope pr-10"></i><a href="mailto:fathanghotro@gmail.com">fathanghotro@gmail.com</a></li>
+						</ul>
+						<!--<ul class="social-links circle small margin-clear clearfix animated-effect-1">-->
+						<!--	<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
+						<!--	<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>-->
+						<!--	<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>-->
+						<!--	<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
+						<!--	<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>-->
+						<!--	<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>-->
+						<!--	<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>-->
+						<!--</ul>-->
+						<div class="separator-2 mt-20 "></div>
+						<!--<a class="btn btn-gray collapsed map-show btn-animated" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">Show Map <i class="fa fa-plus"></i></a>-->
+					</div>
+				</div>
+			</aside>
+			<!-- sidebar end -->
+		</div>
+	</div>
+</section>
+<!-- main-container end -->
